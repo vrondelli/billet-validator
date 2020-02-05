@@ -1,16 +1,18 @@
 import { Injectable, InternalServerErrorException } from '@nestjs/common';
-import { IValidationEntity } from './domain/entities/i-validation-entity';
-import { BankTypeableBilletLine } from './domain/entities/bank-typeable-line/bank-typeable-billet-line';
+import { IValidationEntity } from '../entities/i-validation-entity';
+import { BankTypeableBilletLine } from '../entities/bank-typeable-line/bank-typeable-billet-line';
 
 @Injectable()
 export class BilletValidationService {
   public validateBillet(typeableLine: string) {
     const validationEntity = this.getValidationEntity(typeableLine);
 
+    const isValid = validationEntity.isValid();
+
     return {
-      isValid: validationEntity.isValid(),
-      dueDate: validationEntity.getDueDate(),
-      value: validationEntity.getBilletValue(),
+      isValid,
+      dueDate: isValid ? validationEntity.getDueDate() : null,
+      value: isValid ? validationEntity.getBilletValue() : null,
       billetDigits: validationEntity.getBilletLine()
     };
   }

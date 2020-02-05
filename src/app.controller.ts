@@ -1,6 +1,6 @@
 import { Controller, Post, Body, BadRequestException } from '@nestjs/common';
 import * as Joi from '@hapi/joi';
-import { BilletValidationService } from './billet-validation.service';
+import { BilletValidationService } from './domain/services/billet-validation.service';
 
 @Controller()
 export class AppController {
