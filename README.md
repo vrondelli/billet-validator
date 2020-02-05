@@ -8,9 +8,20 @@ https://storage.googleapis.com/slite-api-files-production/files/b8def5e9-f732-47
 
 ## Endpoint
 
-| Method | Endpoint  | Usage                        | Returns | Body                     |
-| ------ | --------- | ---------------------------- | ------- | ------------------------ |
-| Post   | /download | get all images in zip format | zip     | `{typeableLine: string}` |
+| Method | Endpoint         | Usage                           | Returns         | Body                     |
+| ------ | ---------------- | ------------------------------- | --------------- | ------------------------ |
+| Post   | /validate-billet | validate a billet typeable line | response object | `{typeableLine: string}` |
+
+Response object
+
+```
+{
+    "isValid": true,
+    "dueDate": "2020/01/25",
+    "value": "R$54.11",
+    "billetDigits": "00191814500000054110000002832093002358408917"
+}
+```
 
 ## Installation
 
